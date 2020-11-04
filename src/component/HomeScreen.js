@@ -1,7 +1,6 @@
-import { apisAreAvailable } from 'expo'
 import React from 'react'
 import { Image, StatusBar, StyleSheet, Text, View,} from 'react-native'
-import { FlatList, TouchableOpacity } from 'react-native-gesture-handler'
+import { TouchableOpacity } from 'react-native-gesture-handler'
 import MenuItem from './MenuItem'
 
 const HomeScreen = ({navigation}) => {
@@ -9,22 +8,24 @@ const HomeScreen = ({navigation}) => {
         <>
         <StatusBar barStyle="light-content" hidden={true} />
         <View style={styles.container}>
-            <View style={styles.headerContainer}>
-                <View>
-                    <TouchableOpacity>
-                        <Image style={styles.menu} source={require('../assets/menu.png')} /> 
-                    </TouchableOpacity>
+            <View style={styles.custom}>
+                <View style={styles.headerContainer}>
+                    <View>
+                        <TouchableOpacity onPress={() => navigation.toggleDrawer()}>
+                            <Image style={styles.menu} source={require('../assets/menu.png')} resizeMode='contain' /> 
+                        </TouchableOpacity>
+                    </View>
+                    <View>
+                        <TouchableOpacity activeOpacity={0.8} onPress={() => { navigation.navigate('Profile') }}>
+                            <Image style={styles.profileImage} source={require('../assets/avatar.jpg')} />
+                        </TouchableOpacity>
+                    </View>
                 </View>
                 <View>
-                    <TouchableOpacity activeOpacity={0.8} onPress={() => { navigation.navigate('Profile') }}>
-                        <Image style={styles.profileImage} source={require('../assets/avatar.jpg')} />
-                    </TouchableOpacity>
+                    <Text style={styles.title}>Activity</Text>
                 </View>
+                <MenuItem />
             </View>
-            <View>
-                <Text style={styles.title}>Activity</Text>
-            </View>
-            <MenuItem />
         </View>
         </>
     )
@@ -35,7 +36,7 @@ export default HomeScreen
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#fff'
+        backgroundColor: '#000'
     },
     headerContainer: {
         paddingTop: 20,
@@ -50,13 +51,19 @@ const styles = StyleSheet.create({
         borderRadius: 100,
     },
     menu: {
-        width: 38,
-        height: 38,
+        width: 32,
+        height: 32,
     },
     title: {
         fontSize: 30,
         fontWeight: '700',
         paddingHorizontal: 30,
         marginTop: 30,
+    },
+    custom: {
+        flex: 1,
+        backgroundColor: '#fff', 
+        borderBottomLeftRadius: 25,
+        borderBottomRightRadius: 25,
     }
 })

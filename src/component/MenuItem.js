@@ -37,7 +37,7 @@ const MenuItem = () => {
         return (
             <View style={styles.item}>
                 <View style={styles.itemBg}>
-                    <Image style={styles.icon} source={item.icon} />
+                    <Image style={styles.icon} source={item.icon} resizeMode='contain' />
                     <View>
                         <Text style={styles.info}>{item.info}</Text>
                         <Text style={styles.unit}>{item.unit}</Text>
@@ -106,6 +106,6 @@ const styles = StyleSheet.create({
     },
     flatlist: {
         marginTop: 5,
-        marginHorizontal: 10,
+        marginHorizontal: 12,
     }
 })

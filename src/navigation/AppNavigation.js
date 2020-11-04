@@ -2,9 +2,13 @@ import React from 'react'
 import { Text, TouchableOpacity, StyleSheet, View, Image } from 'react-native'
 import { AnimatedTabBarNavigator } from 'react-native-animated-nav-tab-bar'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
+import { createStackNavigator } from '@react-navigation/stack';
 import Icon from 'react-native-vector-icons/Feather'
-import { StatusBar } from 'expo-status-bar'
 import HomeScreen from '../component/HomeScreen'
+import ProfileScreen from '../screens/ProfileScreen'
+import PasswordScreen from '../screens/PasswordScreen'
+import EditProfileScreen from '../screens/EditProfileScreen'
+import StatisticsScreen from '../screens/StatisticScreen'
 
 const Tabs = AnimatedTabBarNavigator()
 
@@ -18,15 +22,6 @@ const TabBarIcon = props => {
 	)
 }
 
-// const Home = props => (
-//     <>
-//         <StatusBar barStyle="light-content" hidden={true} />
-//         <View style={styles.container}>
-//             <HomeScreen />
-//         </View>
-//     </>
-// )
-
 const Discover = props => (
     <>
         <View>
@@ -34,22 +29,6 @@ const Discover = props => (
             <TouchableOpacity onPress={() => props.navigation.navigate('Home')}>
                 <Text>Go to Home</Text>
             </TouchableOpacity>
-        </View>
-    </>
-)
-
-const Images = () => (
-    <>
-        <View>
-            <Text>Images</Text>
-        </View>
-    </>
-)
-
-const Profile = () => (
-    <>
-        <View>
-            <Text>Profile</Text>
         </View>
     </>
 )
@@ -62,15 +41,16 @@ export default () => (
             activeBackgroundColor: '#44caac' //#9257AA
         }}
         appearence={{
-            tabBarBackground: '#201f23',
+            tabBarBackground: '#000', //'#201f23'
             activeColor: '#fff',
             dotCornerRadius: 44,
-            floating: true,
+            // floating: true,
+            topPadding: 22
         }}
     >
 		<Tabs.Screen
 			name="Home"
-			component={HomeScreen}
+			component={StackHome}
 			options={{
 				tabBarIcon: ({ focused, color }) => (
 					<TabBarIcon
@@ -96,7 +76,7 @@ export default () => (
 		/>
 		<Tabs.Screen
 			name="Statistics"
-			component={Images}
+			component={StackStatistic}
 			options={{
 				tabBarIcon: ({ focused, color }) => (
 					<TabBarIcon
@@ -109,7 +89,7 @@ export default () => (
 		/>
 		<Tabs.Screen
 			name="Profile"
-			component={Profile}
+			component={StackProfile}
 			options={{
 				tabBarIcon: ({ focused, color }) => (
 					<TabBarIcon
@@ -122,6 +102,63 @@ export default () => (
 		/>
 	</Tabs.Navigator>
 )
+const Stack = createStackNavigator();
+
+function StackHome({ navigation }) {
+    return (
+        <Stack.Navigator>
+            <Stack.Screen name="Home" component={HomeScreen}
+                options={{
+                    headerShown: false,
+                }}
+            />
+        </Stack.Navigator>
+    )
+}
+
+function StackStatistic({ navigation }) {
+    return (
+        <Stack.Navigator>
+            <Stack.Screen name="Statistics" component={StatisticsScreen}
+                options={{
+                    headerShown: false,
+                }}
+            />
+        </Stack.Navigator>
+    )
+}
+
+function StackProfile({ navigation }) {
+    return (
+        <Stack.Navigator>
+            <Stack.Screen name="Profile" component={ProfileScreen}
+                options={{
+                    headerShown: false
+                }}
+            />
+            <Stack.Screen name="EditProfile" component={EditProfileScreen}
+                options={{
+                    headerStyle: {
+                        backgroundColor: "#e1e6ea",
+                    },
+                    headerTitleStyle: { color: '#434c73' },
+                    headerTitleAlign: "center",
+                    headerTintColor: '#434c73',
+                }}
+            />
+            <Stack.Screen name="ChangePassword" component={PasswordScreen}
+                options={{
+                    headerStyle: {
+                        backgroundColor: "#e1e6ea",
+                    },
+                    headerTitleStyle: { color: '#434c73' },
+                    headerTitleAlign: "center",
+                    headerTintColor: '#434c73',
+                }}
+            />
+        </Stack.Navigator>
+    )
+}
 
 const styles = StyleSheet.create({
 
