@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyleSheet, Text, View, Image } from 'react-native'
+import { StyleSheet, Text, View, Image, SafeAreaView } from 'react-native'
 import { FlatList } from 'react-native-gesture-handler'
 const data = [
         {
@@ -48,7 +48,7 @@ const MenuItem = () => {
         )
     }
     return (
-        <View style={styles.container}>
+        <SafeAreaView style={styles.container}>
             <FlatList
                 data={data}
                 renderItem={renderItem}
@@ -58,9 +58,8 @@ const MenuItem = () => {
                 showsVerticalScrollIndicator={false}
                 showsHorizontalScrollIndicator={false}
                 contentContainerStyle={styles.flatlist}
-                columnWrapperStyle={{justifyContent: 'space-between'}}
             />
-        </View>
+        </SafeAreaView>
     )
 }
 

@@ -1,13 +1,14 @@
 import React from 'react'
-import { StatusBar, StyleSheet, Text, View, Image } from 'react-native'
+import { StatusBar, StyleSheet, Text, View, Image, SafeAreaView } from 'react-native'
 import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler'
 
 const ProfileScreen = ({navigation}) => {
     return (
         <>
             <StatusBar barStyle="light-content" hidden={true} />
-            <View style={styles.container}>
+            <SafeAreaView style={styles.container}>
                 <View style={styles.custom}>
+
                     <View style={styles.headerContainer}>
                         <Text style={styles.title}>Your Profile</Text>
                     </View>
@@ -17,11 +18,10 @@ const ProfileScreen = ({navigation}) => {
                             <Text style={styles.name}>Cáo Fennec</Text>
                         </View>
                         <View style={styles.info}>
-                            <View style={{ alignItems: 'center', borderColor: '#EAEAEA', borderRightWidth: 2 }}>
+                            <View style={{ alignItems: 'center', borderColor: '#EAEAEA', borderRightWidth: 2, }}>
                                 <Text style={{ fontSize: 20 }}>51 kg</Text>
                                 <Text style={styles.subtext}>Your weight</Text>
                             </View>
-                            <View style={styles.line}></View>
                             <View style={{ alignItems: 'center' }}>
                                 <Text style={{ fontSize: 20 }}>171 cm</Text>
                                 <Text style={styles.subtext}>Your height</Text>
@@ -37,7 +37,7 @@ const ProfileScreen = ({navigation}) => {
                         </TouchableOpacity>
                     </View>
                 </View>
-            </View>
+            </SafeAreaView>
         </>
     )
 }
@@ -106,5 +106,8 @@ const styles = StyleSheet.create({
         alignItems: "center",
         alignSelf: "center",
         marginTop: 50,
-    }
+    },
+    scroll: {
+        flex: 1,
+    },
 })

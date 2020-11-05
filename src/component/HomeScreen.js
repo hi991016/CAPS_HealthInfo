@@ -1,5 +1,5 @@
 import React from 'react'
-import { Image, StatusBar, StyleSheet, Text, View,} from 'react-native'
+import { Image, SafeAreaView, StatusBar, StyleSheet, Text, View,} from 'react-native'
 import { TouchableOpacity } from 'react-native-gesture-handler'
 import MenuItem from './MenuItem'
 
@@ -7,7 +7,7 @@ const HomeScreen = ({navigation}) => {
     return (
         <>
         <StatusBar barStyle="light-content" hidden={true} />
-        <View style={styles.container}>
+        <SafeAreaView style={styles.container}>
             <View style={styles.custom}>
                 <View style={styles.headerContainer}>
                     <View>
@@ -26,7 +26,7 @@ const HomeScreen = ({navigation}) => {
                 </View>
                 <MenuItem />
             </View>
-        </View>
+        </SafeAreaView>
         </>
     )
 }
