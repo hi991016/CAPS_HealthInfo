@@ -8,7 +8,7 @@ const ProfileScreen = ({navigation}) => {
             <StatusBar barStyle="light-content" hidden={true} />
             <SafeAreaView style={styles.container}>
                 <View style={styles.custom}>
-
+                    <ScrollView>
                     <View style={styles.headerContainer}>
                         <Text style={styles.title}>Your Profile</Text>
                     </View>
@@ -16,13 +16,16 @@ const ProfileScreen = ({navigation}) => {
                         <View style={styles.profileImage}>
                             <Image source={require("../assets/avatar.jpg")} style={styles.avatar} />
                             <Text style={styles.name}>Cáo Fennec</Text>
+                            <Text style={{fontSize: 14, color: '#00bcd4'}}>Athlete</Text>
                         </View>
                         <View style={styles.info}>
                             <View style={{ alignItems: 'center', borderColor: '#EAEAEA', borderRightWidth: 2, }}>
-                                <Text style={{ fontSize: 20 }}>51 kg</Text>
-                                <Text style={styles.subtext}>Your weight</Text>
+                                <View style={{alignItems: 'center', right: 45}}>
+                                    <Text style={{ fontSize: 20 }}>51 kg</Text>
+                                    <Text style={styles.subtext}>Your weight</Text>
+                                </View>
                             </View>
-                            <View style={{ alignItems: 'center' }}>
+                            <View style={{ alignItems: 'center', left: 45 }}>
                                 <Text style={{ fontSize: 20 }}>171 cm</Text>
                                 <Text style={styles.subtext}>Your height</Text>
                             </View>
@@ -36,6 +39,7 @@ const ProfileScreen = ({navigation}) => {
                             <Text style={ { color: "#1f2233", fontSize: 19, marginTop: 18 }}>Change Password</Text>
                         </TouchableOpacity>
                     </View>
+                    </ScrollView>
                 </View>
             </SafeAreaView>
         </>
@@ -69,7 +73,7 @@ const styles = StyleSheet.create({
         marginTop: 80,
         backgroundColor: '#fff',
         padding: 75,
-        paddingBottom: 75,
+        paddingBottom: 55,
         borderRadius: 2,
         marginHorizontal: 30,
         shadowColor: '#222',
@@ -85,18 +89,19 @@ const styles = StyleSheet.create({
     },
     profileImage: {
         marginTop: -130,
-        overflow: 'hidden'
+        overflow: 'hidden',
+        alignItems: 'center',
     },  
     info: {
         flex: 1,
         flexDirection: 'row',
         alignItems: 'center',
-        marginTop: 50,
+        marginTop: 35,
     },  
     name: {
         fontSize: 18,
         fontWeight: '600',
-        marginTop: 15,
+        marginTop: 12,
     },
     subtext: {
         fontSize: 14,
@@ -106,8 +111,5 @@ const styles = StyleSheet.create({
         alignItems: "center",
         alignSelf: "center",
         marginTop: 50,
-    },
-    scroll: {
-        flex: 1,
     },
 })
