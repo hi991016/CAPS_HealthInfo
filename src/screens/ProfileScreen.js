@@ -5,10 +5,13 @@ import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler'
 const ProfileScreen = ({navigation}) => {
     return (
         <>
-            <StatusBar barStyle="light-content" hidden={true} />
+            <StatusBar barStyle="dark-content" hidden={true} />
             <SafeAreaView style={styles.container}>
                 <View style={styles.custom}>
-                    <ScrollView>
+                    <ScrollView
+                    showsVerticalScrollIndicator={false}
+                    showsHorizontalScrollIndicator={false}                   
+                    >
                     <View style={styles.headerContainer}>
                         <Text style={styles.title}>Your Profile</Text>
                     </View>
@@ -50,17 +53,21 @@ export default ProfileScreen
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
-        backgroundColor: '#000'
+        position:'absolute',
+        left:0,
+        right:0,
+        top:0,
+        height:'100%',
+        backgroundColor:'#000',
     },
     custom: {
-        flex: 1,
-        backgroundColor: '#fff', 
-        borderBottomLeftRadius: 25,
-        borderBottomRightRadius: 25,
+        backgroundColor: '#FFF',
+        height:'100%',
+        borderBottomLeftRadius: 44,
+        borderBottomRightRadius: 44,
     },
     headerContainer: {
-        paddingTop: 50,
+        paddingTop: 40,
         paddingHorizontal: 30,
     },
     title: {

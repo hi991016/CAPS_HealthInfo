@@ -9,6 +9,8 @@ import ProfileScreen from '../screens/ProfileScreen'
 import PasswordScreen from '../screens/PasswordScreen'
 import EditProfileScreen from '../screens/EditProfileScreen'
 import StatisticsScreen from '../screens/StatisticScreen'
+import ActivityScreen from '../screens/ActivityScreen';
+import RunScreen from '../screens/RunScreen';
 
 const Tabs = AnimatedTabBarNavigator()
 
@@ -22,30 +24,31 @@ const TabBarIcon = props => {
 	)
 }
 
-const Discover = props => (
-    <>
-        <View>
-            <Text>Discover</Text>
-            <TouchableOpacity onPress={() => props.navigation.navigate('Home')}>
-                <Text>Go to Home</Text>
-            </TouchableOpacity>
-        </View>
-    </>
-)
+// const Discover = props => (
+//     <>
+//         <View>
+//             <Text>Discover</Text>
+//             <TouchableOpacity onPress={() => props.navigation.navigate('Home')}>
+//                 <Text>Go to Home</Text>
+//             </TouchableOpacity>
+//         </View>
+//     </>
+// )
 
 export default () => (
 	<Tabs.Navigator initialRouteName="Home"
         tabBarOptions={{
             activeTintColor: '#fff',
             inactiveTintColor: '#fff',
-            activeBackgroundColor: '#44caac' //#9257AA
+            activeBackgroundColor: '#44caac', //#9257AA
         }}
         appearence={{
             tabBarBackground: '#000', //'#201f23'
             activeColor: '#fff',
             dotCornerRadius: 44,
             // floating: true,
-            topPadding: 22
+            topPadding: 22,
+            bottomPadding: 22,
         }}
     >
 		<Tabs.Screen
@@ -63,7 +66,7 @@ export default () => (
 		/>
 		<Tabs.Screen
 			name="Activity"
-			component={Discover}
+			component={StackActivity}
 			options={{
 				tabBarIcon: ({ focused, color, size }) => (
 					<TabBarIcon
@@ -113,6 +116,29 @@ function StackHome({ navigation }) {
                 }}
             />
         </Stack.Navigator>
+    )
+}
+
+function StackActivity({ navigation }) {
+    return (
+        <Stack.Navigator>
+            <Stack.Screen name="Activity" component={ActivityScreen}
+                options={{
+                    headerShown: false,
+                }}
+            />
+            <Stack.Screen name="Running" component={RunScreen}
+                options={{
+                    headerStyle: {
+                        backgroundColor: "#e1e6ea",
+                    },
+                    headerTitleStyle: { color: '#434c73' },
+                    headerTitleAlign: "center",
+                    headerTintColor: '#434c73',
+                }}
+            />
+        </Stack.Navigator>
+        
     )
 }
 

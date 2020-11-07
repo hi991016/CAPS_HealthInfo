@@ -6,7 +6,7 @@ import MenuItem from './MenuItem'
 const HomeScreen = ({navigation}) => {
     return (
         <>
-        <StatusBar barStyle="light-content" hidden={true} />
+        {/* <StatusBar barStyle="dark-content" hidden={true} /> */}
         <SafeAreaView style={styles.container}>
             <View style={styles.custom}>
                 <View style={styles.headerContainer}>
@@ -35,11 +35,15 @@ export default HomeScreen
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
-        backgroundColor: '#000'
+        position:'absolute',
+        left:0,
+        right:0,
+        top:0,
+        height:'100%',
+        backgroundColor:'#000',
     },
     headerContainer: {
-        paddingTop: 20,
+        paddingTop: 25,
         paddingHorizontal: 30,
         flexDirection: 'row',
         justifyContent: 'space-between',
@@ -61,9 +65,9 @@ const styles = StyleSheet.create({
         marginTop: 30,
     },
     custom: {
-        flex: 1,
-        backgroundColor: '#fff', 
-        borderBottomLeftRadius: 25,
-        borderBottomRightRadius: 25,
+        backgroundColor: '#FFF',
+        height:'100%',
+        borderBottomLeftRadius: 44,
+        borderBottomRightRadius: 44,
     }
 })

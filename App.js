@@ -15,7 +15,7 @@ const Drawer = createDrawerNavigator();
 export default function App() {
   return (
     <>
-      <StatusBar barStyle="light-content" hidden={true} />
+      <StatusBar barStyle="dark-content" hidden={true} />
       <NavigationContainer>
         <Drawer.Navigator drawerContent={props => <DrawerMenu {...props} />}>
             <Drawer.Screen name="HomeDrawer" component={AppNavigation} />
