@@ -66,9 +66,9 @@ const DrawerMenu = (props) => {
                         />
                         <DrawerItem
                             icon={({ size }) => (
-                                <AntDesign name="linechart" color='#1f2233' size={size} />
+                                <Feather name="calendar" color='#1f2233' size={size} />
                             )}
-                            label="Statistics"
+                            label="Diary"
                             onPress={() => { props.navigation.navigate('Statistics') }}
                             labelStyle={{ color: '#1f2233' }}
                         />

@@ -6,7 +6,7 @@ import MenuItem from './MenuItem'
 const HomeScreen = ({navigation}) => {
     return (
         <>
-        {/* <StatusBar barStyle="dark-content" hidden={true} /> */}
+        <StatusBar barStyle="dark-content" hidden={true} />
         <SafeAreaView style={styles.container}>
             <View style={styles.custom}>
                 <View style={styles.headerContainer}>

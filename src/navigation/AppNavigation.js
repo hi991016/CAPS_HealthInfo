@@ -78,7 +78,7 @@ export default () => (
 			}}
 		/>
 		<Tabs.Screen
-			name="Statistics"
+			name="Diary"
 			component={StackStatistic}
 			options={{
 				tabBarIcon: ({ focused, color }) => (
